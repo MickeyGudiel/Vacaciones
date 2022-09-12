@@ -1,6 +1,7 @@
 ﻿Imports CapaEntidad
 Imports CapaNegocio
 Public Class frmVacaciones
+    ReadOnly utils As New Utils
     Dim esEditarEmpleado As Boolean = False
     Dim esEditarVacacion As Boolean = False
     Dim empleadoSeleccionado As CEEmpleado = Nothing
@@ -10,13 +11,11 @@ Public Class frmVacaciones
         AccionesEnDataGrid(dgvVacaciones)
         AccionesEnDataGrid(dgvEmpleados)
         AccionesEnDataGrid(dgvEmpleados2)
-        'empleados
         LlenarGridEmpleado()
         LlenarCBoxTipoIdent()
         cbxTipIdent.DisplayMember = "tipo"
         cbxTipIdent.ValueMember = "tipo_ident_id"
         InhabilitarCamposEmpleado()
-        'vacaciones
     End Sub
 
     Private Sub AccionesEnDataGrid(ByRef dgv As DataGridView)
@@ -196,45 +195,48 @@ Public Class frmVacaciones
     End Function
 
     Private Function GetFechaInicio() As Date
-        Return ParsearFecha(dtpFechaIngreso.Value)
+        Return utils.ParsearFecha(dtpFechaIngreso.Value)
     End Function
 
     Private Function GetFechaIniVacacion() As Date
-        Return ParsearFecha(dtpFechaIni.Value)
+        Return utils.ParsearFecha(dtpFechaIni.Value)
     End Function
 
     Private Function GetFechaFinVacacion() As Date
-        Return ParsearFecha(dtpFechaFin.Value)
-    End Function
-
-    Private Function ParsearFecha(fecha As String) As Date
-        Dim oD As Date = DateTime.Parse(fecha).Date
-        Return oD
+        Return utils.ParsearFecha(dtpFechaFin.Value)
     End Function
 
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        esEditarEmpleado = True
-        Dim EmpleadoId As String = dgvEmpleados.SelectedRows(0).Cells("dgEmpleadoId").Value.ToString
-        Dim filaSeleccionada As DataGridViewRow = dgvEmpleados.SelectedRows(0)
-        Dim TipoIden As New CETipoIdentificacion(filaSeleccionada.Cells("dgTiIdentId").Value,
-                                                 filaSeleccionada.Cells("dgTipoIdent").Value)
-        empleadoSeleccionado = New CEEmpleado(filaSeleccionada.Cells("dgEmpleadoId").Value,
-                                 filaSeleccionada.Cells("dgNombre").Value, TipoIden,
-                                 filaSeleccionada.Cells("dgEmpIdent").Value,
-                                 filaSeleccionada.Cells("dgEmpFechaIngreso").Value,
-                                 filaSeleccionada.Cells("dgEmpSalBaseMen").Value,
-                                 filaSeleccionada.Cells("dgEmpDireccion").Value)
-        LlenarCamposParaEditarEmpleado()
-        HabilitarCamposEmpleado()
-        btnGuardar.Visible = True
+        If (dgvEmpleados.SelectedRows.Count > 0) Then
+            esEditarEmpleado = True
+            Dim EmpleadoId As String = dgvEmpleados.SelectedRows(0).Cells("dgEmpleadoId").Value.ToString
+            Dim filaSeleccionada As DataGridViewRow = dgvEmpleados.SelectedRows(0)
+            Dim TipoIden As New CETipoIdentificacion(filaSeleccionada.Cells("dgTiIdentId").Value,
+                                                     filaSeleccionada.Cells("dgTipoIdent").Value)
+            empleadoSeleccionado = New CEEmpleado(filaSeleccionada.Cells("dgEmpleadoId").Value,
+                                     filaSeleccionada.Cells("dgNombre").Value, TipoIden,
+                                     filaSeleccionada.Cells("dgEmpIdent").Value,
+                                     filaSeleccionada.Cells("dgEmpFechaIngreso").Value,
+                                     filaSeleccionada.Cells("dgEmpSalBaseMen").Value,
+                                     filaSeleccionada.Cells("dgEmpDireccion").Value)
+            LlenarCamposParaEditarEmpleado()
+            HabilitarCamposEmpleado()
+            btnGuardar.Visible = True
+        Else
+            MsgBox("No hay empleado seleccionado para editar", MsgBoxStyle.Critical, "Error")
+        End If
     End Sub
 
     Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        Dim objCNEmpleados As New CNEmpleados
-        Dim empleadoEliminado As Boolean = objCNEmpleados.EliminarEmpleado(dgvEmpleados.SelectedRows(0).Cells("dgEmpleadoId").Value)
-        If (empleadoEliminado) Then
-            MsgBox("Empleado eliminado correctamente", MsgBoxStyle.OkOnly, "Empleado eliminado")
-            LlenarGridEmpleado()
+        If (dgvEmpleados.SelectedRows.Count > 0) Then
+            Dim objCNEmpleados As New CNEmpleados
+            Dim empleadoEliminado As Boolean = objCNEmpleados.EliminarEmpleado(dgvEmpleados.SelectedRows(0).Cells("dgEmpleadoId").Value)
+            If (empleadoEliminado) Then
+                MsgBox("Empleado eliminado correctamente", MsgBoxStyle.OkOnly, "Empleado eliminado")
+                LlenarGridEmpleado()
+            End If
+        Else
+            MsgBox("No hay empleado seleccionado para borrar", MsgBoxStyle.Critical, "Error")
         End If
     End Sub
 
@@ -246,18 +248,22 @@ Public Class frmVacaciones
 
     Private Sub btnEditarVacacion_Click(sender As Object, e As EventArgs) Handles btnEditarVacacion.Click
         If (dgvEmpleados2.SelectedRows.Count > 0) Then
-            Dim filaSeleccionada As DataGridViewRow = dgvVacaciones.SelectedRows(0)
-            Dim empSel = filaSeleccionada.Cells("dgVacacionEmpleadoId").Value
-            If (empSel <> Nothing) Then
-                empleadoIdvacacion = empSel
-                vacacionSeleccionada = New CEVacacion(filaSeleccionada.Cells("dgVacacionId").Value,
-                                                       empSel,
-                                                       filaSeleccionada.Cells("dgVacacionFecha").Value,
-                                                       filaSeleccionada.Cells("dgVacacionFechaIni").Value,
-                                                       filaSeleccionada.Cells("dgVacacionFechaFin").Value,
-                                                       filaSeleccionada.Cells("dgVacacionDias").Value)
-                LlenarCamposParaEditarVacacion()
-                esEditarVacacion = True
+            If (dgvVacaciones.SelectedRows.Count > 0) Then
+                Dim filaSeleccionada As DataGridViewRow = dgvVacaciones.SelectedRows(0)
+                Dim empSel = filaSeleccionada.Cells("dgVacacionEmpleadoId").Value
+                If (empSel <> Nothing) Then
+                    empleadoIdvacacion = empSel
+                    vacacionSeleccionada = New CEVacacion(filaSeleccionada.Cells("dgVacacionId").Value,
+                                                           empSel,
+                                                           filaSeleccionada.Cells("dgVacacionFecha").Value,
+                                                           filaSeleccionada.Cells("dgVacacionFechaIni").Value,
+                                                           filaSeleccionada.Cells("dgVacacionFechaFin").Value,
+                                                           filaSeleccionada.Cells("dgVacacionDias").Value)
+                    LlenarCamposParaEditarVacacion()
+                    esEditarVacacion = True
+                End If
+            Else
+                MsgBox("No hay vacacion seleccionada para editar", MsgBoxStyle.Critical, "Error")
             End If
         End If
     End Sub
@@ -318,5 +324,9 @@ Public Class frmVacaciones
     Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
         Dim frmReporte = New frmReporte()
         frmReporte.ShowDialog()
+    End Sub
+
+    Private Sub tbxSalBase_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbxSalBase.KeyPress
+        utils.NumerosyDecimal(tbxSalBase, e)
     End Sub
 End Class
