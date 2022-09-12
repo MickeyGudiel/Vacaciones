@@ -118,6 +118,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSVacacion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmRVacacionesCalc.Designer.vb">
+      <DependentUpon>frmRVacacionesCalc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmRVacacionesCalc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmReporteCalculoAction.Designer.vb">
+      <DependentUpon>frmReporteCalculoAction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmReporteCalculoAction.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\frmReporte.Designer.vb">
       <DependentUpon>frmReporte.vb</DependentUpon>
     </Compile>
@@ -136,10 +148,17 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmRVacacionesCalc.resx">
+      <DependentUpon>frmRVacacionesCalc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmReporteCalculoAction.resx">
+      <DependentUpon>frmReporteCalculoAction.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmReporte.resx">
       <DependentUpon>frmReporte.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report1.rdlc" />
+    <EmbeddedResource Include="Reportes\Report2.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">

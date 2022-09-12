@@ -12,3 +12,17 @@ C:\Users\Mickey\source\repos\Vacaciones\CapaDatos\bin\Debug\CapaEntidad.dll
 C:\Users\Mickey\source\repos\Vacaciones\CapaDatos\bin\Debug\CapaEntidad.pdb
 C:\Users\Mickey\source\repos\Vacaciones\CapaDatos\bin\Debug\CapaEntidad.xml
 C:\Users\Mickey\source\repos\Vacaciones\CapaDatos\obj\Debug\CapaDatos.vbproj.CopyComplete
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\bin\Debug\CapaDatos.xml
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\bin\Debug\CapaEntidad.xml
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.vbproj.AssemblyReference.cache
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.Resources.resources
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.vbproj.GenerateResource.cache
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.vbproj.CoreCompileInputs.cache
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.vbproj.CopyComplete
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.xml
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaDatos\obj\Debug\CapaDatos.pdb

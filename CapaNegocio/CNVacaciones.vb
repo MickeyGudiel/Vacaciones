@@ -20,4 +20,8 @@ Public Class CNVacaciones
         Return ObjCDVacacion.EliminarVacacion(VacacionId)
     End Function
 
+    Function ObtenerCalculoDeVacaciones(FechaIni As Date, FechaCorte As Date) As DataTable
+        Return ObjCDVacacion.ObtenerCalculoDeVacaciones(FechaIni, FechaCorte)
+    End Function
+
 End Class

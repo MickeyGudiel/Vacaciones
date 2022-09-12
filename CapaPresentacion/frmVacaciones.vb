@@ -329,4 +329,9 @@ Public Class frmVacaciones
     Private Sub tbxSalBase_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbxSalBase.KeyPress
         utils.NumerosyDecimal(tbxSalBase, e)
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim frmReporteCalculo = New frmReporteCalculoAction()
+        frmReporteCalculo.ShowDialog()
+    End Sub
 End Class

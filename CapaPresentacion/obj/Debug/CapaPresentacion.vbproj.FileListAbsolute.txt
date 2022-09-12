@@ -148,3 +148,5 @@ C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaPresentacion\bin\Debug\ru\Micros
 C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaPresentacion\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaPresentacion\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaPresentacion\obj\Debug\CapaPresentacion.vbproj.CopyComplete
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaPresentacion\obj\Debug\CapaPresentacion.frmRVacacionesCalc.resources
+C:\Users\Mickey\Documents\GitHub\Vacaciones\CapaPresentacion\obj\Debug\CapaPresentacion.frmReporteCalculoAction.resources

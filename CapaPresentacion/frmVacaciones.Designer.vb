@@ -22,6 +22,8 @@ Partial Class frmVacaciones
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvEmpleados = New System.Windows.Forms.DataGridView()
         Me.dgEmpleadoId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -63,12 +65,6 @@ Partial Class frmVacaciones
         Me.btnEditarVacacion = New System.Windows.Forms.Button()
         Me.btnEliminarVacacion = New System.Windows.Forms.Button()
         Me.dgvVacaciones = New System.Windows.Forms.DataGridView()
-        Me.dgVacacionId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgVacacionEmpleadoId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgVacacionFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgVacacionFechaIni = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgVacacionFechaFin = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgVacacionDias = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvEmpleados2 = New System.Windows.Forms.DataGridView()
         Me.dgEmpleadoId2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -78,6 +74,13 @@ Partial Class frmVacaciones
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgVacacionId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgVacacionEmpleadoId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgVacacionFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgVacacionFechaIni = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgVacacionFechaFin = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgVacacionDias = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.dgvEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabs.SuspendLayout()
         Me.tabEmpleado.SuspendLayout()
@@ -163,10 +166,10 @@ Partial Class frmVacaciones
         Me.tabs.AccessibleName = ""
         Me.tabs.Controls.Add(Me.tabEmpleado)
         Me.tabs.Controls.Add(Me.tabVacacion)
-        Me.tabs.Location = New System.Drawing.Point(0, -1)
+        Me.tabs.Location = New System.Drawing.Point(0, 0)
         Me.tabs.Name = "tabs"
         Me.tabs.SelectedIndex = 0
-        Me.tabs.Size = New System.Drawing.Size(654, 363)
+        Me.tabs.Size = New System.Drawing.Size(654, 362)
         Me.tabs.TabIndex = 1
         '
         'tabEmpleado
@@ -179,7 +182,7 @@ Partial Class frmVacaciones
         Me.tabEmpleado.Location = New System.Drawing.Point(4, 22)
         Me.tabEmpleado.Name = "tabEmpleado"
         Me.tabEmpleado.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabEmpleado.Size = New System.Drawing.Size(646, 337)
+        Me.tabEmpleado.Size = New System.Drawing.Size(646, 336)
         Me.tabEmpleado.TabIndex = 0
         Me.tabEmpleado.Text = "Empleado"
         Me.tabEmpleado.UseVisualStyleBackColor = True
@@ -353,6 +356,7 @@ Partial Class frmVacaciones
         '
         'tabVacacion
         '
+        Me.tabVacacion.Controls.Add(Me.Button1)
         Me.tabVacacion.Controls.Add(Me.lblDiasVac)
         Me.tabVacacion.Controls.Add(Me.Label4)
         Me.tabVacacion.Controls.Add(Me.dtpFechaFin)
@@ -368,7 +372,7 @@ Partial Class frmVacaciones
         Me.tabVacacion.Location = New System.Drawing.Point(4, 22)
         Me.tabVacacion.Name = "tabVacacion"
         Me.tabVacacion.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabVacacion.Size = New System.Drawing.Size(646, 337)
+        Me.tabVacacion.Size = New System.Drawing.Size(646, 336)
         Me.tabVacacion.TabIndex = 1
         Me.tabVacacion.Text = "Vacaciones"
         Me.tabVacacion.UseVisualStyleBackColor = True
@@ -440,9 +444,9 @@ Partial Class frmVacaciones
         '
         Me.btnReporte.Location = New System.Drawing.Point(8, 11)
         Me.btnReporte.Name = "btnReporte"
-        Me.btnReporte.Size = New System.Drawing.Size(103, 23)
+        Me.btnReporte.Size = New System.Drawing.Size(125, 23)
         Me.btnReporte.TabIndex = 7
-        Me.btnReporte.Text = "Generar reporte"
+        Me.btnReporte.Text = "Reporte vacaciones"
         Me.btnReporte.UseVisualStyleBackColor = True
         '
         'btnEditarVacacion
@@ -474,50 +478,6 @@ Partial Class frmVacaciones
         Me.dgvVacaciones.ReadOnly = True
         Me.dgvVacaciones.Size = New System.Drawing.Size(326, 197)
         Me.dgvVacaciones.TabIndex = 4
-        '
-        'dgVacacionId
-        '
-        Me.dgVacacionId.DataPropertyName = "vacacion_id"
-        Me.dgVacacionId.HeaderText = "VacacionId"
-        Me.dgVacacionId.Name = "dgVacacionId"
-        Me.dgVacacionId.ReadOnly = True
-        Me.dgVacacionId.Visible = False
-        '
-        'dgVacacionEmpleadoId
-        '
-        Me.dgVacacionEmpleadoId.DataPropertyName = "empleado_id"
-        Me.dgVacacionEmpleadoId.HeaderText = "EmpleadoId"
-        Me.dgVacacionEmpleadoId.Name = "dgVacacionEmpleadoId"
-        Me.dgVacacionEmpleadoId.ReadOnly = True
-        Me.dgVacacionEmpleadoId.Visible = False
-        '
-        'dgVacacionFecha
-        '
-        Me.dgVacacionFecha.DataPropertyName = "fecha"
-        Me.dgVacacionFecha.HeaderText = "Solicidada"
-        Me.dgVacacionFecha.Name = "dgVacacionFecha"
-        Me.dgVacacionFecha.ReadOnly = True
-        '
-        'dgVacacionFechaIni
-        '
-        Me.dgVacacionFechaIni.DataPropertyName = "fecha_ini"
-        Me.dgVacacionFechaIni.HeaderText = "Inicia"
-        Me.dgVacacionFechaIni.Name = "dgVacacionFechaIni"
-        Me.dgVacacionFechaIni.ReadOnly = True
-        '
-        'dgVacacionFechaFin
-        '
-        Me.dgVacacionFechaFin.DataPropertyName = "fecha_fin"
-        Me.dgVacacionFechaFin.HeaderText = "Finaliza"
-        Me.dgVacacionFechaFin.Name = "dgVacacionFechaFin"
-        Me.dgVacacionFechaFin.ReadOnly = True
-        '
-        'dgVacacionDias
-        '
-        Me.dgVacacionDias.DataPropertyName = "dias"
-        Me.dgVacacionDias.HeaderText = "Días"
-        Me.dgVacacionDias.Name = "dgVacacionDias"
-        Me.dgVacacionDias.ReadOnly = True
         '
         'dgvEmpleados2
         '
@@ -590,12 +550,71 @@ Partial Class frmVacaciones
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         '
+        'dgVacacionId
+        '
+        Me.dgVacacionId.DataPropertyName = "vacacion_id"
+        Me.dgVacacionId.HeaderText = "VacacionId"
+        Me.dgVacacionId.Name = "dgVacacionId"
+        Me.dgVacacionId.ReadOnly = True
+        Me.dgVacacionId.Visible = False
+        '
+        'dgVacacionEmpleadoId
+        '
+        Me.dgVacacionEmpleadoId.DataPropertyName = "empleado_id"
+        Me.dgVacacionEmpleadoId.HeaderText = "EmpleadoId"
+        Me.dgVacacionEmpleadoId.Name = "dgVacacionEmpleadoId"
+        Me.dgVacacionEmpleadoId.ReadOnly = True
+        Me.dgVacacionEmpleadoId.Visible = False
+        '
+        'dgVacacionFecha
+        '
+        Me.dgVacacionFecha.DataPropertyName = "fecha"
+        Me.dgVacacionFecha.HeaderText = "Solicidada"
+        Me.dgVacacionFecha.Name = "dgVacacionFecha"
+        Me.dgVacacionFecha.ReadOnly = True
+        '
+        'dgVacacionFechaIni
+        '
+        Me.dgVacacionFechaIni.DataPropertyName = "fecha_ini"
+        DataGridViewCellStyle5.Format = "d"
+        Me.dgVacacionFechaIni.DefaultCellStyle = DataGridViewCellStyle5
+        Me.dgVacacionFechaIni.HeaderText = "Inicia"
+        Me.dgVacacionFechaIni.Name = "dgVacacionFechaIni"
+        Me.dgVacacionFechaIni.ReadOnly = True
+        '
+        'dgVacacionFechaFin
+        '
+        Me.dgVacacionFechaFin.DataPropertyName = "fecha_fin"
+        DataGridViewCellStyle6.Format = "d"
+        Me.dgVacacionFechaFin.DefaultCellStyle = DataGridViewCellStyle6
+        Me.dgVacacionFechaFin.HeaderText = "Finaliza"
+        Me.dgVacacionFechaFin.Name = "dgVacacionFechaFin"
+        Me.dgVacacionFechaFin.ReadOnly = True
+        '
+        'dgVacacionDias
+        '
+        Me.dgVacacionDias.DataPropertyName = "dias"
+        Me.dgVacacionDias.HeaderText = "Días"
+        Me.dgVacacionDias.Name = "dgVacacionDias"
+        Me.dgVacacionDias.ReadOnly = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(139, 11)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(125, 23)
+        Me.Button1.TabIndex = 17
+        Me.Button1.Text = "Reporte calculos"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmVacaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(653, 359)
         Me.Controls.Add(Me.tabs)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "frmVacaciones"
         Me.Text = "Form1"
         CType(Me.dgvEmpleados, System.ComponentModel.ISupportInitialize).EndInit()
@@ -653,12 +672,6 @@ Partial Class frmVacaciones
     Friend WithEvents dtpFechaIni As DateTimePicker
     Friend WithEvents Button6 As Button
     Friend WithEvents Button5 As Button
-    Friend WithEvents dgVacacionId As DataGridViewTextBoxColumn
-    Friend WithEvents dgVacacionEmpleadoId As DataGridViewTextBoxColumn
-    Friend WithEvents dgVacacionFecha As DataGridViewTextBoxColumn
-    Friend WithEvents dgVacacionFechaIni As DataGridViewTextBoxColumn
-    Friend WithEvents dgVacacionFechaFin As DataGridViewTextBoxColumn
-    Friend WithEvents dgVacacionDias As DataGridViewTextBoxColumn
     Friend WithEvents dgEmpleadoId2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -667,4 +680,11 @@ Partial Class frmVacaciones
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents dgVacacionId As DataGridViewTextBoxColumn
+    Friend WithEvents dgVacacionEmpleadoId As DataGridViewTextBoxColumn
+    Friend WithEvents dgVacacionFecha As DataGridViewTextBoxColumn
+    Friend WithEvents dgVacacionFechaIni As DataGridViewTextBoxColumn
+    Friend WithEvents dgVacacionFechaFin As DataGridViewTextBoxColumn
+    Friend WithEvents dgVacacionDias As DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As Button
 End Class

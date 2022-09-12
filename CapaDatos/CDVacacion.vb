@@ -25,6 +25,29 @@ Public Class CDVacacion
         End Try
     End Function
 
+    Function ObtenerCalculoDeVacaciones(FechaIni As Date, FechaCorte As Date) As DataTable
+        Try
+            Using cn = GetConection()
+                cn.Open()
+                Using da = New SqlDataAdapter("VP_ObtenerCalculoDeVacaciones", cn)
+                    With da.SelectCommand
+                        .CommandType = CommandType.StoredProcedure
+                        .Parameters.Add("@p_fecha_ini", SqlDbType.Date).Value = FechaIni
+                        .Parameters.Add("@p_fecha_corte", SqlDbType.Date).Value = FechaCorte
+                    End With
+                    Dim reader = da.SelectCommand.ExecuteReader()
+                    Using table = New DataTable
+                        table.Load(reader)
+                        reader.Dispose()
+                        Return table
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
+
     Function EditarVacacion(vacacion As CEVacacion) As Boolean
         Try
             Using cn = GetConection()
